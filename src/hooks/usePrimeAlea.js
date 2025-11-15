@@ -1,28 +1,28 @@
-import { asyncPrimeCheck } from "../service/asyncPrimeCheck";
 import { usePrimeStore } from "../stores/usePrimeStore";
 import { numberSchema } from "../schemas/numberSchema";
+import { fetchPrimeStatus } from "../api/fetchFakePrimeApi";
 
 export const usePrimeAlea = () => {
     const { prime, isLoading, setIsLoading, setPrime } = usePrimeStore();
 
     const checkRandomPrime = async (n) => {
             // zod validation!!
-        const pareResult = numberSchema.safeParse({ number: n });
-        if (!pareResult.success) {
-            throw new Error(pareResult.error.errors[0].message);
+        const parseResult = numberSchema.safeParse({ number: n });
+        if (!parseResult.success) {
+            throw new Error(parseResult.error.errors[0].message);
         }
            // ERROR FIRST
         if(prime[n] !== undefined) {
             return prime[n];
         }
-        
+
         setIsLoading(true);
-        const result = await asyncPrimeCheck(n);
-        setPrime(n, result);
+        const {prime} = await fetchPrimeStatus(n);
+        setPrime(n, prime);
 
         setIsLoading(false);
 
-        return result;
+        return prime;
     };
     return { isLoading, checkRandomPrime, prime };
 }

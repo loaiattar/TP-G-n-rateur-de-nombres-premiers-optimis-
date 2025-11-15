@@ -8,6 +8,6 @@ export const usePrimeStore = create((set) => ({
         set((state) => ({
             prime: { ...state.prime, [n]: isPrime },
         })),
-    setIsLoading: (loading) =>
-        set ({ isLoading: loading}),
+    setIsLoading: (value) =>
+        set ({ isLoading: value }),
 }));
