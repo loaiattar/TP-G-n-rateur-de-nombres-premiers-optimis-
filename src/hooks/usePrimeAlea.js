@@ -17,12 +17,12 @@ export const usePrimeAlea = () => {
         }
 
         setIsLoading(true);
-        const {prime} = await fetchPrimeStatus(n);
-        setPrime(n, prime);
+        const { prime: fetchedPrime } = await fetchPrimeStatus(n);
+        setPrime(n, fetchedPrime);
 
         setIsLoading(false);
 
-        return prime;
+        return fetchedPrime;
     };
     return { isLoading, checkRandomPrime, prime };
 }
