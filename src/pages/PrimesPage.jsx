@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { numberSchema } from "../schemas/numberSchema";
-import Input from "../components/Input";
+import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 import Prime from "../components/Prime";
+import { usePrimeAlea } from "../hooks/usePrimeAlea";
 
 export default function PrimesPage() {
   const [number, setNumber] = useState(null);
