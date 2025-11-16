@@ -11,24 +11,39 @@ const Header = () => {
   ];
 
   return (
-    <header className="flex flex-col md:flex-row md:items-center md:justify-between p-4 bg-white shadow-md sticky top-0 z-50">
-      <h1 className="text-2xl font-bold mb-2 md:mb-0">My App</h1>
+    <header className="backdrop-blur-lg bg-white/70 shadow-lg sticky top-0 z-50">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between p-4">
+        <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+          My App
+        </h1>
 
-      <nav className="flex gap-4">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.label}
-            to={tab.path}
-            className={`px-3 py-2 rounded-md font-medium transition ${
-              location.pathname === tab.path
-                ? 'bg-blue-500 text-white'
-                : 'text-gray-700 hover:bg-gray-100'
-            }`}
-          >
-            {tab.label}
-          </Link>
-        ))}
-      </nav>
+        <nav className="flex gap-2 mt-2 md:mt-0">
+          {tabs.map((tab) => {
+            const active = location.pathname === tab.path;
+
+            return (
+              <Link
+                key={tab.label}
+                to={tab.path}
+                className={`
+                  relative px-4 py-2 rounded-lg font-medium transition-all
+                  ${active 
+                    ? "bg-blue-600 text-white shadow-md scale-105" 
+                    : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:shadow-sm"
+                  }
+                `}
+              >
+                {tab.label}
+
+                {/* Underline animation */}
+                {!active && (
+                  <span className="absolute left-0 bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </header>
   );
 };

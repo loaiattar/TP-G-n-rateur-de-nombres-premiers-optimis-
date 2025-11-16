@@ -12,9 +12,6 @@ export default function Prime({ number, isPrime }) {
       <p>
         Number: <strong>{number}</strong>
       </p>
-      <p>
-        Prime? <strong>{isPrime ? "✅ Yes" : "❌ No"}</strong>
-      </p>
     </div>
   );
 }
