@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
 
-function App() {
- 
+const router = createRouter({
+  routeTree,
+});
+
+export default function AppRouter() {
+  return <RouterProvider router={router} />;
 }
-
-export default App

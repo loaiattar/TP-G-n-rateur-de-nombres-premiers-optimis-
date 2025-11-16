@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "tsr generate && vite",
+    "build": "tsr generate && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate": "tanstack router generate"
+    "generate": "tsr generate"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
