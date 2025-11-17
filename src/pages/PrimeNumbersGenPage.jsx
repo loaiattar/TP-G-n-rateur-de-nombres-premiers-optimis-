@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 import Prime from "../components/Prime";
@@ -90,8 +90,9 @@ export default function PrimeNumbersGenPage() {
   };
 
   return (
+    <>
+    <Header />
     <div>
-      <Header />
       <h1>Prime Numbers Generator</h1>
       
       <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
@@ -142,8 +143,8 @@ export default function PrimeNumbersGenPage() {
           />
         ))}
       </div>
-
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 }

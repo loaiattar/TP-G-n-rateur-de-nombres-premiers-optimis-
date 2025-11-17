@@ -6,8 +6,7 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      <h1>Welcome to Prime Checker App</h1>
-      <p>
+      <p className="flex flex-col min-h-screen">
         Go to <Link to="/primes">/primes</Link> to test numbers for primality.
       </p>
       <Footer />
