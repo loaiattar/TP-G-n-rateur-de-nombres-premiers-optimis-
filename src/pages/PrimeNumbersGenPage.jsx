@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useRef } from "react";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 import Prime from "../components/Prime";
@@ -9,7 +9,7 @@ import { getPrime } from "../api/primeApi";
 const generateFirstNPrimes = (count, startFrom = 2) => {
   const primes = [];
   let candidate = Math.max(2, startFrom);
-  
+
   while (primes.length < count) {
     let isPrime = true;
     for (let i = 2; i * i <= candidate; i++) {
@@ -23,7 +23,7 @@ const generateFirstNPrimes = (count, startFrom = 2) => {
     }
     candidate++;
   }
-  
+
   return primes;
 };
 
@@ -34,35 +34,35 @@ export default function PrimeNumbersGenPage() {
   const [totalToGenerate, setTotalToGenerate] = useState(0);
   const [startFromInput, setStartFromInput] = useState("2");
   const [generationAborted, setGenerationAborted] = useState(false);
-  let abortFlag = false;
+  const abortRef = useRef(false);
 
   const handleStartGeneration = async () => {
-    abortFlag = false;
+    abortRef.current = false;
     setGenerationAborted(false);
     setPrimes([]);
     setPrimeStatuses({});
     setIsGenerating(true);
-    
+
     const startFrom = Math.max(2, parseInt(startFromInput) || 2);
-    
+
     // Generate first 100 primes starting from startFrom
     const firstHundredPrimes = generateFirstNPrimes(100, startFrom);
     setTotalToGenerate(firstHundredPrimes.length);
-    
+
     // Fetch status for each prime one by one and update the UI
     for (let i = 0; i < firstHundredPrimes.length; i++) {
-      if (abortFlag || generationAborted) break;
-      
+      if (abortRef.current) break;
+
       const primeNum = firstHundredPrimes[i];
-      
+
       try {
         const { prime: isPrime } = await getPrime(primeNum);
-        
-        if (abortFlag || generationAborted) break;
-        
+
+        if (abortRef.current) break;
+
         // Add to primes list
         setPrimes(prevPrimes => [...prevPrimes, primeNum]);
-        
+
         // Track the prime status
         setPrimeStatuses(prevStatuses => ({
           ...prevStatuses,
@@ -70,8 +70,8 @@ export default function PrimeNumbersGenPage() {
         }));
       } catch (err) {
         console.error(`Error fetching status for ${primeNum}:`, err);
-        if (abortFlag || generationAborted) break;
-        
+        if (abortRef.current) break;
+
         setPrimes(prevPrimes => [...prevPrimes, primeNum]);
         setPrimeStatuses(prevStatuses => ({
           ...prevStatuses,
@@ -79,72 +79,79 @@ export default function PrimeNumbersGenPage() {
         }));
       }
     }
-    
-    setIsGenerating(false);
+
+    // If we broke out of the loop because of abort, we should set generationAborted to true
+    // But we already set it in handleStopGeneration. 
+    // However, if the loop finishes naturally, we need to turn off isGenerating.
+    // If aborted, isGenerating is turned off in handleStopGeneration.
+    // To be safe, we can check abortRef here too.
+    if (!abortRef.current) {
+      setIsGenerating(false);
+    }
   };
 
   const handleStopGeneration = () => {
-    abortFlag = true;
+    abortRef.current = true;
     setGenerationAborted(true);
     setIsGenerating(false);
   };
 
   return (
     <>
-    <Header />
-    <div>
-      <h1>Prime Numbers Generator</h1>
-      
-      <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-        <Input
-          type="number"
-          value={startFromInput}
-          onChange={(e) => setStartFromInput(e.target.value)}
-          placeholder="Start from number"
-          min={2}
-          disabled={isGenerating}
-        />
-        <div style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}>
-          <Button 
-            onClick={handleStartGeneration} 
+      <Header />
+      <div>
+        <h1>Prime Numbers Generator</h1>
+
+        <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+          <Input
+            type="number"
+            value={startFromInput}
+            onChange={(e) => setStartFromInput(e.target.value)}
+            placeholder="Start from number"
+            min={2}
             disabled={isGenerating}
-          >
-            Start
-          </Button>
-          <Button 
-            onClick={handleStopGeneration} 
-            disabled={!isGenerating}
-            style={{ backgroundColor: "#dc2626" }}
-          >
-            Stop
-          </Button>
+          />
+          <div style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}>
+            <Button
+              onClick={handleStartGeneration}
+              disabled={isGenerating}
+            >
+              Start
+            </Button>
+            <Button
+              onClick={handleStopGeneration}
+              disabled={!isGenerating}
+              style={{ backgroundColor: "#dc2626" }}
+            >
+              Stop
+            </Button>
+          </div>
+        </div>
+
+        <p>
+          {isGenerating
+            ? `Generating first 100 primes... (${primes.length}/${totalToGenerate})`
+            : generationAborted
+              ? `Stopped. Generated ${primes.length} primes`
+              : `Generated ${primes.length} primes`
+          }
+        </p>
+
+        <div style={{ marginTop: "2rem" }}>
+          {primes.length === 0 && isGenerating && (
+            <p>Loading first primes...</p>
+          )}
+
+          {primes.map((primeNum) => (
+            <Prime
+              key={primeNum}
+              number={primeNum}
+              isPrime={primeStatuses[primeNum]}
+            />
+          ))}
         </div>
       </div>
-      
-      <p>
-        {isGenerating 
-          ? `Generating first 100 primes... (${primes.length}/${totalToGenerate})`
-          : generationAborted
-          ? `Stopped. Generated ${primes.length} primes`
-          : `Generated ${primes.length} primes`
-        }
-      </p>
-
-      <div style={{ marginTop: "2rem" }}>
-        {primes.length === 0 && isGenerating && (
-          <p>Loading first primes...</p>
-        )}
-        
-        {primes.map((primeNum) => (
-          <Prime
-            key={primeNum}
-            number={primeNum}
-            isPrime={primeStatuses[primeNum]}
-          />
-        ))}
-      </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 }
