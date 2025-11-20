@@ -1,6 +1,6 @@
 const Footer = ({ className = '' }) => {
   return (
-    <footer className={`bg-gray-100 text-gray-700 p-4 mt-8 ${className}`}>
+    <footer className={`bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300 p-4 mt-8 ${className}`}>
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <p className="text-sm">&copy; {new Date().getFullYear()} My App. All rights reserved.</p>
 

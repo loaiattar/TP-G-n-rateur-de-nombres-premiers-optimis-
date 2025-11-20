@@ -2,8 +2,6 @@ import { useState } from "react";
 import { numberSchema } from "../schemas/numberSchema";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
-import Header from "../components/ui/Header";
-import Footer from "../components/ui/Footer";
 import Prime from "../components/Prime";
 import { usePrimeAlea } from "../hooks/usePrimeAlea";
 
@@ -12,7 +10,7 @@ export default function PrimesPage() {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
 
-   const { checkRandomPrime, isLoading, prime } = usePrimeAlea();
+  const { checkRandomPrime, isLoading, prime } = usePrimeAlea();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +45,6 @@ export default function PrimesPage() {
 
   return (
     <div>
-      <Header />
       <h1>Prime Checker</h1>
 
       <Button onClick={generateRandomNumber} disabled={isLoading}>
@@ -72,8 +69,6 @@ export default function PrimesPage() {
 
       {/* Display using Prime component */}
       {number !== null && <Prime number={number} isPrime={prime[number]} />}
-
-      <Footer />
     </div>
   );
 }

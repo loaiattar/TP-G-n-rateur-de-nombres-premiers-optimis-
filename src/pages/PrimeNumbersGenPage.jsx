@@ -1,6 +1,4 @@
 import { useState, useRef } from "react";
-import Header from "../components/ui/Header";
-import Footer from "../components/ui/Footer";
 import Prime from "../components/Prime";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
@@ -98,50 +96,60 @@ export default function PrimeNumbersGenPage() {
 
   return (
     <>
-      <Header />
-      <div>
-        <h1>Prime Numbers Generator</h1>
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+          Prime Numbers Generator
+        </h1>
 
-        <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-          <Input
-            type="number"
-            value={startFromInput}
-            onChange={(e) => setStartFromInput(e.target.value)}
-            placeholder="Start from number"
-            min={2}
-            disabled={isGenerating}
-          />
-          <div style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}>
-            <Button
-              onClick={handleStartGeneration}
-              disabled={isGenerating}
-            >
-              Start
-            </Button>
-            <Button
-              onClick={handleStopGeneration}
-              disabled={!isGenerating}
-              style={{ backgroundColor: "#dc2626" }}
-            >
-              Stop
-            </Button>
+        <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+            <div className="w-full md:w-64">
+              <Input
+                type="number"
+                value={startFromInput}
+                onChange={(e) => setStartFromInput(e.target.value)}
+                placeholder="Start from number"
+                min={2}
+                disabled={isGenerating}
+              />
+            </div>
+            <div className="flex gap-3 w-full md:w-auto">
+              <Button
+                onClick={handleStartGeneration}
+                disabled={isGenerating}
+                className="flex-1 md:flex-none"
+              >
+                Start
+              </Button>
+              <Button
+                onClick={handleStopGeneration}
+                disabled={!isGenerating}
+                className="flex-1 md:flex-none bg-red-600 hover:bg-red-700 text-white"
+                style={{ backgroundColor: "" }} // Override inline style from previous edit if any
+              >
+                Stop
+              </Button>
+            </div>
           </div>
+
+          <p className="text-center mt-4 text-gray-600 dark:text-gray-400 font-medium">
+            {isGenerating
+              ? `Generating first 100 primes... (${primes.length}/${totalToGenerate})`
+              : generationAborted
+                ? `Stopped. Generated ${primes.length} primes`
+                : `Generated ${primes.length} primes`
+            }
+          </p>
         </div>
 
-        <p>
-          {isGenerating
-            ? `Generating first 100 primes... (${primes.length}/${totalToGenerate})`
-            : generationAborted
-              ? `Stopped. Generated ${primes.length} primes`
-              : `Generated ${primes.length} primes`
-          }
-        </p>
+        {primes.length === 0 && isGenerating && (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-500 dark:text-gray-400">Initializing generator...</p>
+          </div>
+        )}
 
-        <div style={{ marginTop: "2rem" }}>
-          {primes.length === 0 && isGenerating && (
-            <p>Loading first primes...</p>
-          )}
-
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
           {primes.map((primeNum) => (
             <Prime
               key={primeNum}
@@ -151,7 +159,6 @@ export default function PrimeNumbersGenPage() {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useContactStore } from '../stores/contactStore';
 import { contactSchema } from '../schemas/contactSchema';
-import { z } from 'zod';
 
 export default function ContactForm() {
   const { name, email, message, setName, setEmail, setMessage, reset } = useContactStore();
@@ -31,45 +30,50 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto bg-white p-6 rounded shadow space-y-4"
+      className="max-w-4xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 space-y-4 transition-all duration-300"
     >
-      <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+      <h2 className="text-3xl font-extrabold mb-4 text-gray-900 dark:text-white text-center bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+        Contact Us
+      </h2>
 
-      <div>
-        <label className="block mb-1 font-medium">Name</label>
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Name</label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-200"
+          placeholder="Your Name"
         />
-        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+        {errors.name && <p className="text-red-500 text-sm mt-1 font-medium">{errors.name}</p>}
       </div>
 
-      <div>
-        <label className="block mb-1 font-medium">Email</label>
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Email</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-200"
+          placeholder="you@example.com"
         />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        {errors.email && <p className="text-red-500 text-sm mt-1 font-medium">{errors.email}</p>}
       </div>
 
-      <div>
-        <label className="block mb-1 font-medium">Message</label>
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Message</label>
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-gray-100 h-20 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all duration-200"
+          placeholder="How can we help you?"
         />
-        {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+        {errors.message && <p className="text-red-500 text-sm mt-1 font-medium">{errors.message}</p>}
       </div>
 
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
       >
         Send Message
       </button>
