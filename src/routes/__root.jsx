@@ -1,4 +1,5 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { Toaster } from "sonner";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
 
@@ -10,6 +11,7 @@ export const Route = createRootRoute({
         <Outlet />
       </main>
       <Footer />
+      <Toaster position="top-center" richColors />
     </div>
   ),
 });

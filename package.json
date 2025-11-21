@@ -16,6 +16,7 @@
     "@tanstack/react-router": "^1.136.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "sonner": "^2.0.7",
     "zod": "^4.1.12",
     "zustand": "^5.0.8",
     "zustand-persist": "^0.4.0"

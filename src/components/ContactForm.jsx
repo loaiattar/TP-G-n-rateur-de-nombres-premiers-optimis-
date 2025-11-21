@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useContactStore } from '../stores/contactStore';
 import { contactSchema } from '../schemas/contactSchema';
+import { toast } from 'sonner';
 
 export default function ContactForm() {
   const { name, email, message, setName, setEmail, setMessage, reset } = useContactStore();
@@ -19,11 +20,12 @@ export default function ContactForm() {
         newErrors[err.path[0]] = err.message;
       });
       setErrors(newErrors);
+      toast.error("Please fix the errors in the form.");
       return;
     }
 
     setErrors({});
-    alert(`Message sent!\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
+    toast.success(`Message sent! Thanks, ${name}.`);
     reset();
   };
 
