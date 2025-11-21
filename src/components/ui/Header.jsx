@@ -14,8 +14,8 @@ const Header = () => {
   return (
     <header className="backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 shadow-lg sticky top-0 z-50 transition-colors duration-300">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between p-4">
-        <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-          My App
+        <h1 className="text-lg md:text-xl font-extrabold tracking-tighter bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text font-game">
+          Check&nbsp;Prime
         </h1>
 
         <div className="flex items-center gap-4 mt-2 md:mt-0">

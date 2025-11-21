@@ -36,9 +36,12 @@ const Button = ({
       onClick={onClick}
       disabled={disabled || loading}
       className={`
-        flex items-center justify-center gap-2 px-4 py-2 rounded
-        bg-blue-500 text-white font-medium hover:bg-blue-600 transition
-        disabled:bg-gray-400 disabled:cursor-not-allowed
+        flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+        bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold 
+        shadow-lg hover:shadow-blue-500/30 hover:shadow-xl
+        transform hover:scale-105 active:scale-95 
+        transition-all duration-200 ease-in-out
+        disabled:bg-gray-400 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none
         ${className}
       `}
     >
