@@ -1,16 +1,85 @@
-# React + Vite
+# Prime Numbers Made Beautiful
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance React application designed to explore the fascinating world of prime numbers. Built with a focus on aesthetics, performance, and user experience.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project leverages the latest web technologies to deliver a premium experience:
 
-## React Compiler
+-   **Core:** [React 19](https://react.dev/) & [Vite](https://vitejs.dev/) - For blazing fast development and rendering.
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS for rapid, responsive design.
+-   **Animations:** [Framer Motion](https://www.framer.com/motion/) - Smooth, physics-based animations.
+-   **Routing:** [TanStack Router](https://tanstack.com/router) - Type-safe, file-based routing.
+-   **State Management:** [Zustand](https://github.com/pmndrs/zustand) - Minimalist state management with persistence.
+-   **Validation:** [Zod](https://zod.dev/) - TypeScript-first schema validation.
+-   **Notifications:** [Sonner](https://sonner.emilkowal.ski/) - An opinionated toast component for React.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Project Structure
 
-## Expanding the ESLint configuration
+```
+src/
+├── api/                # API simulation and logic
+├── components/         # Reusable UI components
+│   ├── ui/             # Generic UI elements (Button, Input, etc.)
+│   └── ...
+├── hooks/              # Custom React hooks
+├── pages/              # Page components
+├── routes/             # TanStack Router route definitions
+├── schemas/            # Zod validation schemas
+├── stores/             # Zustand state stores
+└── utils/              # Helper functions
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Installation & Setup
+
+Follow these steps to get the project running locally:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd TP-G-n-rateur-de-nombres-premiers-optimis-
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open your browser:**
+    Navigate to `http://localhost:5173` to view the app.
+
+## 🗺️ User Journey
+
+Here is how to get the most out of the application:
+
+### 1. The Landing Page
+-   Upon entering, you are greeted by a **cinematic entrance animation**.
+-   Use the navigation tabs or the call-to-action buttons to explore the tools.
+
+### 2. Check a Number (`/primes`)
+-   Navigate to "Prime Numbers Check".
+-   Enter any number to **instantly verify** if it is prime.
+-   Receive immediate visual feedback: Green for Prime, Red for Not Prime.
+
+### 3. Generate Primes (`/primes-gen`)
+-   Go to "Prime Numbers Generator".
+-   Enter a starting number (optional).
+-   Click **Start** to generate a list of the next 100 prime numbers.
+-   *Note: The generator uses an optimized batch algorithm for maximum speed.*
+
+### 4. Contact Us (`/contact`)
+-   Have feedback? Go to the "Contact" page.
+-   Fill out the form (validated in real-time).
+-   Submit to see a beautiful **toast notification**.
+
+### 5. Personalization
+-   Toggle **Dark Mode** using the sun/moon icon in the header. Your preference is saved automatically!
+
+---
+
+*Built with ❤️ by Loai ELATTAR*

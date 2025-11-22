@@ -16,6 +16,9 @@ const Footer = ({ className = '' }) => {
           <Link to="/primes-gen" className="hover:underline">
             Prime Numbers Generator
           </Link>
+          <Link to="/about" className="hover:underline">
+            About
+          </Link>
           <Link to="/contact" className="hover:underline">
             Contact
           </Link>

@@ -10,6 +10,7 @@ const Header = () => {
     { label: 'Home', path: '/' },
     { label: 'Prime Numbers Check', path: '/primes' },
     { label: 'Prime Numbers Generator', path: '/primes-gen' },
+    { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' }
   ];
 

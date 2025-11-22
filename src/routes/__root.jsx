@@ -2,6 +2,7 @@ import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
+import NotFound from "../components/NotFound";
 
 export const Route = createRootRoute({
   component: () => (
@@ -14,4 +15,5 @@ export const Route = createRootRoute({
       <Toaster position="top-center" richColors />
     </div>
   ),
+  notFoundComponent: NotFound,
 });
