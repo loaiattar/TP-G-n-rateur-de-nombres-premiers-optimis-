@@ -50,6 +50,10 @@ export default function PrimesPage() {
       </h1>
 
       <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 mb-8 transition-all duration-300 hover:shadow-md">
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-6 px-4">
+          Generate a random number to test, or enter one below. <br />
+          <span className="text-sm opacity-80">Note: The generated number is a candidate to be checked, not guaranteed to be prime.</span>
+        </p>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row gap-4 items-stretch justify-center">
             <Button
@@ -87,6 +91,17 @@ export default function PrimesPage() {
               Check Prime
             </Button>
           </form>
+
+          <div className="flex justify-center gap-6 text-sm font-medium mt-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm shadow-green-500/50"></div>
+              <span className="text-gray-600 dark:text-gray-300">Green = Prime</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm shadow-red-500/50"></div>
+              <span className="text-gray-600 dark:text-gray-300">Red = Not Prime</span>
+            </div>
+          </div>
         </div>
 
         {error && (

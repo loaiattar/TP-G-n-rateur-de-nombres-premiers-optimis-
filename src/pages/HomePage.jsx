@@ -26,7 +26,7 @@ export default function HomePage() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
           >
-            Explore the fascinating world of prime numbers with our optimized generator and checker tools.
+            Explore the world of prime numbers with our optimized generator and checker tool.
           </motion.p>
         </div>
 

@@ -27,7 +27,6 @@ src/
 ├── routes/             # TanStack Router route definitions
 ├── schemas/            # Zod validation schemas
 ├── stores/             # Zustand state stores
-└── utils/              # Helper functions
 ```
 
 ## 🛠️ Installation & Setup
@@ -70,7 +69,8 @@ Here is how to get the most out of the application:
 -   Go to "Prime Numbers Generator".
 -   Enter a starting number (optional).
 -   Click **Start** to generate a list of the next 100 prime numbers.
--   *Note: The generator uses an optimized batch algorithm for maximum speed.*
+-   Click **Stop** to stop the generation.
+-   You can ENTER a strt point number to generate a list of prime numbers starting from that number.
 
 ### 4. Contact Us (`/contact`)
 -   Have feedback? Go to the "Contact" page.

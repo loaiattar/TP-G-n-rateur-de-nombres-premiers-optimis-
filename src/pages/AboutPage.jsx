@@ -26,6 +26,7 @@ export default function AboutPage() {
         { name: "Tailwind CSS", color: "bg-cyan-500" },
         { name: "Framer Motion", color: "bg-pink-500" },
         { name: "TanStack Router", color: "bg-yellow-500" },
+        { name: "TanStack Query", color: "bg-green-500" },
         { name: "Zustand", color: "bg-orange-500" },
     ];
 
@@ -56,9 +57,11 @@ export default function AboutPage() {
                         <span className="text-3xl">👋</span> About Me
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        Hi there! I'm a passionate developer who loves building beautiful and functional web applications.
-                        I created this project to demonstrate the power of modern React ecosystems and to provide a useful tool for exploring prime numbers.
-                        I'm always learning and pushing the boundaries of what's possible on the web.
+                        Hi, my name is Loai ELATTAR and i'm a web developer student at HETIC school in computer science.
+                        I'm passionate about web development and always looking for new challenges to improve my skills.
+                        I'm also a big fan of the web development community and love to share my knowledge with others.
+                        this project is a showcase of modern web development technologies, built with passion and precision
+                        and it is a project demanded by my professor Antoine LUCSKO as a practice on React and Vite.
                     </p>
                 </motion.section>
 
@@ -78,6 +81,7 @@ export default function AboutPage() {
                         <li><strong>Prime Generator:</strong> Efficiently generate lists of prime numbers using optimized algorithms.</li>
                         <li><strong>Responsive Design:</strong> Works perfectly on any device, from mobile to desktop.</li>
                         <li><strong>Dark Mode:</strong> Fully supported dark theme for comfortable viewing at night.</li>
+                        <li><strong>Not Found Page:</strong> A custom 404 page for when users navigate to non-existent routes.</li>
                     </ul>
                 </motion.section>
 

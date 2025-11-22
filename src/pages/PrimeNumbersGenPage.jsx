@@ -102,6 +102,10 @@ export default function PrimeNumbersGenPage() {
         </h1>
 
         <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+          <p className="text-center text-gray-600 dark:text-gray-300 mb-6 px-4">
+            Click <span className="font-bold text-blue-600 dark:text-blue-400">Start</span> to generate the first 100 prime numbers. <br />
+            You can optionally enter a starting number below. Click <span className="font-bold text-red-600 dark:text-red-400">Stop</span> at any time to abort.
+          </p>
           <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
             <div className="w-full md:w-64">
               <Input
