@@ -74,11 +74,14 @@ Here is how to get the most out of the application:
 
 ### 4. Contact Us (`/contact`)
 -   Have feedback? Go to the "Contact" page.
--   Fill out the form (validated in real-time).
+-   Fill out the form (validated in real-time using Zod).
 -   Submit to see a beautiful **toast notification**.
 
 ### 5. Personalization
 -   Toggle **Dark Mode** using the sun/moon icon in the header. Your preference is saved automatically!
+
+### 6. Error Handling
+-   A custom **Not Found** component manages non-existent pages and links, ensuring a smooth user experience even when things go wrong.
 
 ---
 
